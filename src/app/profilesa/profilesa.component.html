@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="main-body">
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{profile.fullName}}</h4>
+                      <p class="text-secondary mb-1">{{profile.userTechSkills}}</p>
+                      <p class="text-muted font-size-sm">{{profile.email}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                  <h2>Points</h2>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                 <span class="text-secondary"> {{profile.rewardPoints}}</span>
+                  </li>
+<!-- 
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <span class="text-secondary">Applied 10</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <span class="text-secondary">Completed 23</span>
+                  </li> -->
+                  
+                </ul>
+              </div>
+            </div>
+           
+           
+           
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                 <h1>Your Ideas</h1>
+                </div>
+              </div>
+              <div class="row gutters-sm">
+                <div class="col-sm-12 ">
+                  <div class="card h-100">
+                    <div class="card-body">
+                          
+                        {{profile.userProfileSummary}}
+
+                    </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            
+          </div>
+        </div>
+    </div>
