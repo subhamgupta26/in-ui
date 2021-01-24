@@ -7,11 +7,9 @@ body{
 .main-body {
     padding: 15px;
 }
-.card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
 
 .card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -24,9 +22,10 @@ body{
 }
 
 .card-body {
-    flex: 1 1 auto;
+    /* flex: 1 1 auto; */
     min-height: 1px;
     padding: 1rem;
+    margin-bottom: 10px;
 }
 
 .gutters-sm {
@@ -50,4 +49,27 @@ body{
 }
 .shadow-none {
     box-shadow: none!important;
+}
+
+.example-card {
+    max-width: 100%;
+  }
+  
+.example-header-image {
+background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+background-size: cover;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+textarea {
+    width : 100%;
 }

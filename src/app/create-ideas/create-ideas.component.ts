@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IdeaslistService } from '../ideaslist.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-ideas',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateIdeasComponent implements OnInit {
 
-  constructor() { }
+  ideaTitle = ''
+  ideaDesc = ''
+
+  constructor(private router: Router, private ideaslistService: IdeaslistService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+  }
+
+  submit() {
+    this.ideaslistService.submitIdea(this.ideaTitle,this.ideaDesc).subscribe(
+      res => {
+        console.log(res);
+        this.toastr.success('Submitted!!');
+      },
+      error => {
+        this.toastr.error('Oops! Submission Failed');
+      }
+    );
   }
 
 }

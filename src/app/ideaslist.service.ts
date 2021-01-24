@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService {
+export class IdeaslistService {
 
   baseUrl= 'http://localhost:8080';
 
@@ -16,18 +16,29 @@ export class ProfileService {
     return headers;
   }
 
-  getLoggedInUser() {
-      const headers = new HttpHeaders();
-      this.createHeader(headers);
-      var userId= 'm0j04br'; //sessionStorage.getItem('username');
-      return this.http.get(`${this.baseUrl}/userinfo/user/${userId}`,{headers: headers} );
-
-  }
-
-  getAllIdeas() {
+  getUserIdeas() {
     const headers = new HttpHeaders();
     this.createHeader(headers);
     var userId= 'm0j04br'; //sessionStorage.getItem('username');
     return this.http.get(`${this.baseUrl}/userinfo/user/${userId}/entity/`,{headers: headers} );
   }
+
+  submitIdea(title, desc) {
+    const headers = new HttpHeaders();
+    this.createHeader(headers);
+    var userId= 'm0j04br'; //sessionStorage.getItem('username');
+    var user = {
+      userId:userId,
+      desc: desc,
+      title: title,
+      userDomainSkills: [
+        1
+      ],
+      userTechSkills: [
+        1
+      ]    
+    };
+    return this.http.post(`${this.baseUrl}/entities`, user,{headers: headers} );
+}
+
 }

@@ -7,7 +7,7 @@
                      </div>
                      <div class="panel-body">
                     <form role="form">
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                         <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
@@ -18,17 +18,17 @@
                                     <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                 </div>
                             </div>
+                        </div> -->
+
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Name your Idea">
                         </div>
 
                         <div class="form-group">
-                            <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-                        </div>
-
-                        <div class="form-group">
-                      <textarea  class="form-control input-sm" placeholder="Share your Ideas"></textarea>
+                      <textarea  class="form-control input-sm" placeholder="Share your Idea in detail"></textarea>
                         </div>
                         
-                        <input type="submit" value="Ideas" class="btn btn-info btn-block">
+                        <input type="submit" value="Submit" (click)="submit()" class="btn btn-info btn-block">
                     
                     </form>
                 </div>
