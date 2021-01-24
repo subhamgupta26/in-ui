@@ -41,4 +41,61 @@ export class IdeaslistService {
     return this.http.post(`${this.baseUrl}/entities`, user,{headers: headers} );
 }
 
+submitComment(commentText) {
+  const headers = new HttpHeaders();
+  this.createHeader(headers);
+  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var operationFields = {
+    userId:userId,
+    commentText:commentText
+  }
+  var commentDetails =  {
+    operation: "comment",
+    operationFields: JSON.stringify(operationFields)
+  };
+  return this.http.post(`${this.baseUrl}/entities`, commentDetails, {headers: headers} );
+}
+
+liked() {
+  const headers = new HttpHeaders();
+  this.createHeader(headers);
+  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var likeDetails =  {
+    operation: "like",
+    userId:userId,
+  };
+  return this.http.post(`${this.baseUrl}/entities`, likeDetails, {headers: headers} );
+}
+
+approved() {
+  const headers = new HttpHeaders();
+  this.createHeader(headers);
+  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var operationFields = {
+    reqMemberCount:3,     //from where to get these details?
+    rewardPointsPerPerson:230,
+    projectStartDate:1610709400,
+    projectEndDate:1610709400,
+  }
+  var approveDetails =  {
+    operation: "approved",
+    operationFields:JSON.stringify(operationFields),
+  };
+  return this.http.post(`${this.baseUrl}/entities`, approveDetails, {headers: headers} );
+}
+
+applied() {
+  const headers = new HttpHeaders();
+  this.createHeader(headers);
+  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var operationFields = {
+    userId:userId,
+  }
+  var appliedDetails =  {
+    operation: "apply",
+    operationFields:JSON.stringify(operationFields),
+  };
+  return this.http.post(`${this.baseUrl}/entities`, appliedDetails, {headers: headers} );
+}
+
 }

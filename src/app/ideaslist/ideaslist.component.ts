@@ -10,6 +10,7 @@ export interface DialogData {
   desc: string;
 }
 
+
 @Component({
   selector: 'app-ideaslist',
   templateUrl: './ideaslist.component.html',
@@ -22,6 +23,8 @@ export class IdeaslistComponent implements OnInit {
 
   title: string;
   desc: string;
+
+  commentText : string;
 
   data: string = "I like this read-more component because it's very helpful. This tutorial so good. I will share it with others.";
   dataLength: boolean;
@@ -58,6 +61,50 @@ export class IdeaslistComponent implements OnInit {
     this.dataLength = !(data.length > 30)
   }
 
+  submitComment() {
+    this.ideaslistService.submitComment(this.commentText).subscribe(    //how to know for which idea/project is this comment?
+      res => {
+        console.log(res);
+      },
+      error => {
+        this.toastr.error('Oops! Comment Failed');
+      }
+    );
+  }
+
+  liked() {
+    this.ideaslistService.liked().subscribe(    //how to know for which idea/project is this comment?
+      res => {
+        console.log(res);
+      },
+      error => {
+        this.toastr.error('Oops! Like Failed');
+      }
+    );
+  }
+
+  approved() {
+    this.ideaslistService.approved().subscribe(    //how to know for which idea/project is this comment?
+      res => {
+        console.log(res);
+      },
+      error => {
+        this.toastr.error('Oops! Approve Failed');
+      }
+    );
+  }
+
+  applied() {
+    this.ideaslistService.applied().subscribe(    //how to know for which idea/project is this comment?
+      res => {
+        console.log(res);
+      },
+      error => {
+        this.toastr.error('Oops! Apply Failed');
+      }
+    );
+  }
+
   getIdeasAndProject() {
     this.ideas = [{
       "_id": '9abc',
@@ -65,6 +112,41 @@ export class IdeaslistComponent implements OnInit {
       "title": "Vendor Live Rating Project",
       "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
       "entitytype":1,
+      "userDomainSkills": [
+        1,
+        2,
+        3
+      ],
+      "userTechSkills": [
+        1,
+        2,
+        3
+      ],
+      "likes": [],
+      "commentList": [{
+        "userId": "m0j04br",
+        "commentText": "superb idea intersted !!"
+      },
+      {
+        "userId": "s0g06c3",
+        "commentText": "very good !!!!"
+      }],
+      "entityCreatedTime": '1610709400',
+      "projectStatus": "ongoing",
+      "rewardPointsPerPerson": '230',
+      "projectStartDate": '1610709400',
+      "projectEndDate": '1610709400',
+      "appliedMemberCount": '4',
+      "selectedMemberCount": '0',
+      "reqMemberCount": '0',
+      "likesCount": '0'
+    }];
+    this.projects = [{
+      "_id": '9abc',
+      "userId": "m0j04br",
+      "title": "Vendor Live Rating Project",
+      "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
+      "entitytype":2,
       "userDomainSkills": [
         1,
         2,
