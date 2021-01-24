@@ -6,7 +6,8 @@
   <div class="main-body">
 
     <div class="row gutters-sm">
-      <div class="col-md-4 mb-3">   <!--profile-->
+      <div class="col-md-4 mb-3">
+        <!--profile-->
         <div class="card">
           <div fxFlex>
             <div class="d-flex flex-column align-items-center text-center">
@@ -17,12 +18,8 @@
                 <p class="text-secondary mb-1">{{profile.userTechSkills}}</p>
                 <p class="text-muted font-size-sm">{{profile.email}}</p>
               </div>
-              <div class="col-sm-12 ">
-                <div class="card h-100">
-                  <div class="card-body">
-                    {{profile.userProfileSummary}}
-                  </div>
-                </div>
+              <div class="card">
+                {{profile.userProfileSummary}}
               </div>
             </div>
           </div>
@@ -44,7 +41,8 @@
         </div>
       </div>
 
-      <div fxLayout="column" fxLayoutAlign="space-between"> <!--right side-->
+      <div fxLayout="column" fxLayoutAlign="space-between">
+        <!--right side-->
         <!-- <div class="card mb-3">
           <div fxFlex style="width: 100%; max-width: 100%;">
             <form class="example-form" style="width: 100%; max-width: 100%;">
@@ -62,19 +60,59 @@
           </div>
         </div>
         <div class="row gutters-sm">
-          
 
         </div>
-        <div fxLayout="column" fxLayoutAlign="center">
+        <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="15px">
           <mat-card class="example-card card" *ngFor="let idea of ideas">
             <mat-card-header>
               <div mat-card-avatar class="example-header-image"></div>
               <mat-card-title>{{idea.title}}</mat-card-title>
             </mat-card-header>
-            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+            <img mat-card-image src="https://miro.medium.com/max/4116/1*5I5R7u-pz2pHoBpmQstcuw.jpeg"
+              alt="Photo of a Shiba Inu">
             <mat-card-content>
               <p>{{idea.desc}}</p>
             </mat-card-content>
+            <div fxLayout="row">
+              <button class="btn btn-info btn-circle text-uppercase" href="#" id="like" (click)=liked(idea._id)>
+                <span class="glyphicon glyphicon-thumbs-up"></span> {{idea.likesCount}} Like</button>
+
+              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne">
+                <span class="glyphicon glyphicon-comment"></span> {{idea.commentList.length}} comments</a>
+            </div>
+            <div class="collapse" id="replyOne">
+              <ul class="media-list">
+                <li class="media media-replied" *ngFor="let comment of idea.commentList">
+                  <div class="media-body">
+                    <div class="well well-lg">
+                      <h4 class="media-heading text-uppercase reviews">
+                        <span class="glyphicon glyphicon-share-alt"></span> {{comment.userId}}</h4>
+                      <!-- <ul class="media-date text-uppercase reviews list-inline">
+                                  <li class="dd">22</li>
+                                  <li class="mm">09</li>
+                                  <li class="aaaa">2020</li>
+                              </ul> -->
+                      <p class="media-comment"> {{comment.commentText}} </p>
+                    </div>
+                  </div>
+                </li>
+                <li class="media media-replied" id="replied">
+
+                  <div class="media-body">
+                    <div class="well well-lg">
+                      <div class="form-group">
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" [(ngModel)]="commentText">
+                        </div>
+                        <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"
+                          (click)=submitComment(idea._id)>
+                          <span class="glyphicon glyphicon-send"></span> Reply</button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </mat-card>
         </div>
       </div>

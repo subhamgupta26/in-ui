@@ -9,16 +9,18 @@ body{
 }
 
 .card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #F5F5F5;
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
     border-radius: .25rem;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .card-body {
@@ -56,7 +58,7 @@ body{
   }
   
 .example-header-image {
-background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+background-image: url('https://bootdey.com/img/Content/avatar/avatar7.png');
 background-size: cover;
 }
 
@@ -73,3 +75,15 @@ background-size: cover;
 textarea {
     width : 100%;
 }
+
+.mat-card-image {
+    padding : 50px;
+}
+
+.btn-circle {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+.btn-circle span { padding-right: 6px; }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProfileService } from '../service/profile.service';
 import { idea} from '../model/idea';
+import { IdeaslistService } from '../ideaslist.service';
 // import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -17,8 +18,9 @@ import { idea} from '../model/idea';
 export class ProfilesaComponent implements OnInit {
 
   // text :string;
+  commentText : string;
   constructor(private router: Router,
-    private profileservice: ProfileService, private toastr: ToastrService) { //public dialog: MatDialog
+    private profileservice: ProfileService, private toastr: ToastrService, private ideaslistService: IdeaslistService) { //public dialog: MatDialog
     this.getCurrentUser();
     this.getAllIdeas();
   }
@@ -79,6 +81,28 @@ export class ProfilesaComponent implements OnInit {
     // );
   }
 
+  submitComment(id) {
+    this.ideaslistService.submitComment(this.commentText,id).subscribe(    //how to know for which idea/project is this comment?
+      res => {
+        console.log(res);
+      },
+      error => {
+        this.toastr.error('Oops! Comment Failed');
+      }
+    );
+  }
+
+  liked(id:string) {
+    this.ideaslistService.liked(id).subscribe(    //how to know for which idea/project is this comment?
+      res => {
+        console.log(res);
+      },
+      error => {
+        this.toastr.error('Oops! Like Failed');
+      }
+    );
+  }
+
   getAllIdeas() {
 
     this.ideas = [{
@@ -108,7 +132,36 @@ export class ProfilesaComponent implements OnInit {
       "selectedMemberCount": '0',
       "reqMemberCount": '0',
       "likesCount": '0'
-    }];
+    },
+    {
+      "_id": '9abc',
+      "userId": "m0j04br",
+      "title": "Machine Learning Project",
+      "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
+      "entitytype":1,
+      "userDomainSkills": [
+        1,
+        2,
+        3
+      ],
+      "userTechSkills": [
+        1,
+        2,
+        3
+      ],
+      "likes": [],
+      "commentList": [],
+      "entityCreatedTime": '1610709400',
+      "projectStatus": "ongoing",
+      "rewardPointsPerPerson": '230',
+      "projectStartDate": '1610709400',
+      "projectEndDate": '1610709400',
+      "appliedMemberCount": '4',
+      "selectedMemberCount": '0',
+      "reqMemberCount": '0',
+      "likesCount": '0'
+    }
+  ];
 
     // this.ideas = [{
     //   "_id": '9abc',
