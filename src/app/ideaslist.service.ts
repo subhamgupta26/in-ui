@@ -19,18 +19,19 @@ export class IdeaslistService {
   getUserIdeas() {
     const headers = new HttpHeaders();
     this.createHeader(headers);
-    var userId= 'm0j04br'; //sessionStorage.getItem('username');
-    return this.http.get(`${this.baseUrl}/userinfo/user/${userId}/entity/`,{headers: headers} );
+    var userId= sessionStorage.getItem('username');
+    return this.http.get(`${this.baseUrl}/entities`,{headers: headers} );
   }
 
   submitIdea(title, desc) {
     const headers = new HttpHeaders();
     this.createHeader(headers);
-    var userId= 'm0j04br'; //sessionStorage.getItem('username');
+    var userId= sessionStorage.getItem('username');
     var user = {
       userId:userId,
       desc: desc,
       title: title,
+      entityType: 1,
       userDomainSkills: [
         1
       ],
@@ -44,7 +45,7 @@ export class IdeaslistService {
 submitComment(commentText, id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
-  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var userId= sessionStorage.getItem('username');
   var operationFields = {
     userId:userId,
     commentText:commentText
@@ -53,24 +54,24 @@ submitComment(commentText, id) {
     operation: "comment",
     operationFields: JSON.stringify(operationFields)
   };
-  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, commentDetails, {headers: headers} );
+  return this.http.put(`${this.baseUrl}/entities/entityId/${id}`, commentDetails, {headers: headers} );
 }
 
 liked(id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
-  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var userId= sessionStorage.getItem('username');
   var likeDetails =  {
     operation: "like",
     userId:userId,
   };
-  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, likeDetails, {headers: headers} );
+  return this.http.put(`${this.baseUrl}/entities/entityId/${id}`, likeDetails, {headers: headers} );
 }
 
 approved(id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
-  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var userId= sessionStorage.getItem('username');
   var operationFields = {
     reqMemberCount:3,     //from where to get these details?
     rewardPointsPerPerson:230,
@@ -81,13 +82,13 @@ approved(id) {
     operation: "approved",
     operationFields:JSON.stringify(operationFields),
   };
-  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, approveDetails, {headers: headers} );
+  return this.http.put(`${this.baseUrl}/entities/entityId/${id}`, approveDetails, {headers: headers} );
 }
 
 applied(id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
-  var userId= 'm0j04br'; //sessionStorage.getItem('username');
+  var userId= sessionStorage.getItem('username');
   var operationFields = {
     userId:userId,
   }
@@ -95,7 +96,7 @@ applied(id) {
     operation: "apply",
     operationFields:JSON.stringify(operationFields),
   };
-  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, appliedDetails, {headers: headers} );
+  return this.http.put(`${this.baseUrl}/entities/entityId/${id}`, appliedDetails, {headers: headers} );
 }
 
 }

@@ -11,7 +11,7 @@ import { IdeaslistComponent } from './ideaslist/ideaslist.component';
 import { ProjectideasComponent } from './projectideas/projectideas.component';
 
 const routes: Routes = [
-  { path: '',component:IdeaslistComponent,canActivate:[AuthguardService] },
+  { path: '',component:LoginComponent,canActivate:[AuthguardService] },
   {path:'showcase',component:ShowCaseComponent,canActivate:[AuthguardService]},
   {path:'profile',component:ProfilesaComponent,canActivate:[AuthguardService]},
   {path:'createIdeas',component:CreateIdeasComponent,canActivate:[AuthguardService]},

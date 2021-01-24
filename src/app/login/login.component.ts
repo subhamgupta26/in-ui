@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Login Successful!!');
           sessionStorage.setItem('username',res['response'].userId);
           sessionStorage.setItem('roleId',res['response'].roleId);
-                this.router.navigate(['']);
+                this.router.navigate(['/idealist']);
                 this.invalidLogin = false;
         },
         error => {

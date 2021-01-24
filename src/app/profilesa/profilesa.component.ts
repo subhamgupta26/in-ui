@@ -56,59 +56,59 @@ export class ProfilesaComponent implements OnInit {
 
 
   getCurrentUser() {
-    this.profile = {
-      'userId': '12342',
-      'fullName': 'Priyanka Singh',
-      'teamName': 'Hacktober',
-      'email': 'ppriya@gmail.com',
-      'userProfileSummary': 'userProfileSummary',
-      'userTechSkills': 'Angular',
-      'userDomainSkills': 'JS TS',
-      'rewardPoints': '500',
-      'badgeType': 'Diamond'
-    }
-    // this.profileservice.getLoggedInUser().subscribe(
-    //   res =>{
-    //     console.log(res);
-    //       this.profile=res['response'];
-    //   },
-    //   error => {
-    //     this.toastr.error('get User Failed');
-    //   }
+    // this.profile = {
+    //   'userId': '12342',
+    //   'fullName': 'Priyanka Singh',
+    //   'teamName': 'Hacktober',
+    //   'email': 'ppriya@gmail.com',
+    //   'userProfileSummary': 'userProfileSummary',
+    //   'userTechSkills': 'Angular',
+    //   'userDomainSkills': 'JS TS',
+    //   'rewardPoints': '500',
+    //   'badgeType': 'Diamond'
+    // }
+    this.profileservice.getLoggedInUser().subscribe(
+      res =>{
+        console.log(res);
+          this.profile=res['response'];
+      },
+      error => {
+        this.toastr.error('get User Failed');
+      }
 
-    // );
+    );
   }
 
   getAllIdeas() {
 
-    this.ideas = [{
-      "_id": '9abc',
-      "userId": "m0j04br",
-      "title": "Vendor Live Rating Project",
-      "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
-      "entitytype":1,
-      "userDomainSkills": [
-        1,
-        2,
-        3
-      ],
-      "userTechSkills": [
-        1,
-        2,
-        3
-      ],
-      "likes": [],
-      "commentList": [],
-      "entityCreatedTime": '1610709400',
-      "projectStatus": "ongoing",
-      "rewardPointsPerPerson": '230',
-      "projectStartDate": '1610709400',
-      "projectEndDate": '1610709400',
-      "appliedMemberCount": '4',
-      "selectedMemberCount": '0',
-      "reqMemberCount": '0',
-      "likesCount": '0'
-    }];
+    // this.ideas = [{
+    //   "_id": '9abc',
+    //   "userId": "m0j04br",
+    //   "title": "Vendor Live Rating Project",
+    //   "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
+    //   "entitytype":1,
+    //   "userDomainSkills": [
+    //     1,
+    //     2,
+    //     3
+    //   ],
+    //   "userTechSkills": [
+    //     1,
+    //     2,
+    //     3
+    //   ],
+    //   "likes": [],
+    //   "commentList": [],
+    //   "entityCreatedTime": '1610709400',
+    //   "projectStatus": "ongoing",
+    //   "rewardPointsPerPerson": '230',
+    //   "projectStartDate": '1610709400',
+    //   "projectEndDate": '1610709400',
+    //   "appliedMemberCount": '4',
+    //   "selectedMemberCount": '0',
+    //   "reqMemberCount": '0',
+    //   "likesCount": '0'
+    // }];
 
     // this.ideas = [{
     //   "_id": '9abc',

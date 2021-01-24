@@ -21,11 +21,11 @@
                         </div> -->
 
                         <div class="form-group">
-                            <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Name your Idea">
+                            <input type="email" name="email" id="email" class="form-control input-sm" [(ngModel)]="ideaTitle" placeholder="Name your Idea">
                         </div>
 
                         <div class="form-group">
-                      <textarea  class="form-control input-sm" placeholder="Share your Idea in detail"></textarea>
+                      <textarea  class="form-control input-sm" placeholder="Share your Idea in detail" name="desc" [(ngModel)]="ideaDesc" ></textarea>
                         </div>
                         
                         <input type="submit" value="Submit" (click)="submit()" class="btn btn-info btn-block">

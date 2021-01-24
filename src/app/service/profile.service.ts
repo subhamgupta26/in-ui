@@ -19,7 +19,7 @@ export class ProfileService {
   getLoggedInUser() {
       const headers = new HttpHeaders();
       this.createHeader(headers);
-      var userId= 'm0j04br'; //sessionStorage.getItem('username');
+      var userId= sessionStorage.getItem('username');
       return this.http.get(`${this.baseUrl}/userinfo/user/${userId}`,{headers: headers} );
 
   }
@@ -27,7 +27,7 @@ export class ProfileService {
   getAllIdeas() {
     const headers = new HttpHeaders();
     this.createHeader(headers);
-    var userId= 'm0j04br'; //sessionStorage.getItem('username');
+    var userId= sessionStorage.getItem('username');
     return this.http.get(`${this.baseUrl}/userinfo/user/${userId}/entity/`,{headers: headers} );
   }
 }

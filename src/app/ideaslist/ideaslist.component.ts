@@ -109,92 +109,92 @@ export class IdeaslistComponent implements OnInit {
   }
 
   getIdeasAndProject() {
-    this.ideas = [{
-      "_id": '9abc',
-      "userId": "m0j04br",
-      "title": "Vendor Live Rating Project",
-      "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
-      "entitytype":1,
-      "userDomainSkills": [
-        1,
-        2,
-        3
-      ],
-      "userTechSkills": [
-        1,
-        2,
-        3
-      ],
-      "likes": [],
-      "commentList": [{
-        "userId": "m0j04br",
-        "commentText": "superb idea intersted !!"
-      },
-      {
-        "userId": "s0g06c3",
-        "commentText": "very good !!!!"
-      }],
-      "entityCreatedTime": '1610709400',
-      "projectStatus": "ongoing",
-      "rewardPointsPerPerson": '230',
-      "projectStartDate": '1610709400',
-      "projectEndDate": '1610709400',
-      "appliedMemberCount": '4',
-      "selectedMemberCount": '0',
-      "reqMemberCount": '0',
-      "likesCount": '0'
-    }];
-
-    this.projects = [{
-      "_id": '9abc',
-      "userId": "rej04br",
-      "title": "Vendor Live Rating Project",
-      "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
-      "entitytype":2,
-      "userDomainSkills": [
-        1,
-        2,
-        3
-      ],
-      "userTechSkills": [
-        1,
-        2,
-        3
-      ],
-      "likes": [],
-      "commentList": [{
-        "userId": "m0j04br",
-        "commentText": "superb idea intersted !!"
-      },
-      {
-        "userId": "s0g06c3",
-        "commentText": "very good !!!!"
-      }],
-      "entityCreatedTime": '1610709400',
-      "projectStatus": "ongoing",
-      "rewardPointsPerPerson": '230',
-      "projectStartDate": '1610709400',
-      "projectEndDate": '1610709400',
-      "appliedMemberCount": '4',
-      "selectedMemberCount": '0',
-      "reqMemberCount": '0',
-      "likesCount": '0'
-    }];
-    // this.ideaslistService.getUserIdeas().subscribe(
-    //   res =>{
-    //     console.log(res);
-    //       this.Allideas=res['response'];
-    //       this.ideas = this.ideas.filter(obj => obj['entitytype']===1);
-    //       this.projects = this.ideas.filter(obj => obj['entitytype']===2);
-
-    //       // this.ideas.map(x => (x.entityCreatedTime
-    //       //   setUTCSeconds(x.entityCreatedTime));
-
+    // this.ideas = [{
+    //   "_id": '9abc',
+    //   "userId": "m0j04br",
+    //   "title": "Vendor Live Rating Project",
+    //   "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
+    //   "entitytype":1,
+    //   "userDomainSkills": [
+    //     1,
+    //     2,
+    //     3
+    //   ],
+    //   "userTechSkills": [
+    //     1,
+    //     2,
+    //     3
+    //   ],
+    //   "likes": [],
+    //   "commentList": [{
+    //     "userId": "m0j04br",
+    //     "commentText": "superb idea intersted !!"
     //   },
-    //   error => {
-    //     this.toastr.error('get User Failed');
-    //   }
-    // );
+    //   {
+    //     "userId": "s0g06c3",
+    //     "commentText": "very good !!!!"
+    //   }],
+    //   "entityCreatedTime": '1610709400',
+    //   "projectStatus": "ongoing",
+    //   "rewardPointsPerPerson": '230',
+    //   "projectStartDate": '1610709400',
+    //   "projectEndDate": '1610709400',
+    //   "appliedMemberCount": '4',
+    //   "selectedMemberCount": '0',
+    //   "reqMemberCount": '0',
+    //   "likesCount": '0'
+    // }];
+
+    // this.projects = [{
+    //   "_id": '9abc',
+    //   "userId": "rej04br",
+    //   "title": "Vendor Live Rating Project",
+    //   "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
+    //   "entitytype":2,
+    //   "userDomainSkills": [
+    //     1,
+    //     2,
+    //     3
+    //   ],
+    //   "userTechSkills": [
+    //     1,
+    //     2,
+    //     3
+    //   ],
+    //   "likes": [],
+    //   "commentList": [{
+    //     "userId": "m0j04br",
+    //     "commentText": "superb idea intersted !!"
+    //   },
+    //   {
+    //     "userId": "s0g06c3",
+    //     "commentText": "very good !!!!"
+    //   }],
+    //   "entityCreatedTime": '1610709400',
+    //   "projectStatus": "ongoing",
+    //   "rewardPointsPerPerson": '230',
+    //   "projectStartDate": '1610709400',
+    //   "projectEndDate": '1610709400',
+    //   "appliedMemberCount": '4',
+    //   "selectedMemberCount": '0',
+    //   "reqMemberCount": '0',
+    //   "likesCount": '0'
+    // }];
+    this.ideaslistService.getUserIdeas().subscribe(
+      res =>{
+        console.log(res);
+          this.Allideas=res['response'];
+          this.ideas = this.Allideas.filter(obj => obj['entityType']===1);
+          this.projects = this.Allideas.filter(obj => obj['entityType']===2);
+
+          // this.ideas.map(x => (x.entityCreatedTime
+          //   setUTCSeconds(x.entityCreatedTime));
+
+      },
+      error => {
+        this.toastr.error('get User Failed');
+      }
+    );
   }
 
 }

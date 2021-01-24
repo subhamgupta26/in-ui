@@ -22,7 +22,9 @@ export class CreateIdeasComponent implements OnInit {
     this.ideaslistService.submitIdea(this.ideaTitle,this.ideaDesc).subscribe(
       res => {
         console.log(res);
+        this.router.navigate(['/idealist']);
         this.toastr.success('Submitted!!');
+        
       },
       error => {
         this.toastr.error('Oops! Submission Failed');
