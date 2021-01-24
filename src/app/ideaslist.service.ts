@@ -41,7 +41,7 @@ export class IdeaslistService {
     return this.http.post(`${this.baseUrl}/entities`, user,{headers: headers} );
 }
 
-submitComment(commentText) {
+submitComment(commentText, id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
   var userId= 'm0j04br'; //sessionStorage.getItem('username');
@@ -53,10 +53,10 @@ submitComment(commentText) {
     operation: "comment",
     operationFields: JSON.stringify(operationFields)
   };
-  return this.http.post(`${this.baseUrl}/entities`, commentDetails, {headers: headers} );
+  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, commentDetails, {headers: headers} );
 }
 
-liked() {
+liked(id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
   var userId= 'm0j04br'; //sessionStorage.getItem('username');
@@ -64,10 +64,10 @@ liked() {
     operation: "like",
     userId:userId,
   };
-  return this.http.post(`${this.baseUrl}/entities`, likeDetails, {headers: headers} );
+  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, likeDetails, {headers: headers} );
 }
 
-approved() {
+approved(id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
   var userId= 'm0j04br'; //sessionStorage.getItem('username');
@@ -81,10 +81,10 @@ approved() {
     operation: "approved",
     operationFields:JSON.stringify(operationFields),
   };
-  return this.http.post(`${this.baseUrl}/entities`, approveDetails, {headers: headers} );
+  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, approveDetails, {headers: headers} );
 }
 
-applied() {
+applied(id) {
   const headers = new HttpHeaders();
   this.createHeader(headers);
   var userId= 'm0j04br'; //sessionStorage.getItem('username');
@@ -95,7 +95,7 @@ applied() {
     operation: "apply",
     operationFields:JSON.stringify(operationFields),
   };
-  return this.http.post(`${this.baseUrl}/entities`, appliedDetails, {headers: headers} );
+  return this.http.post(`${this.baseUrl}/entities/entityId/${id}`, appliedDetails, {headers: headers} );
 }
 
 }

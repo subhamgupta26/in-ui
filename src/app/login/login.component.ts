@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.toastr.success('Login Successful!!');
           sessionStorage.setItem('username',res['response'].userId);
+          sessionStorage.setItem('roleId',res['response'].roleId);
                 this.router.navigate(['']);
                 this.invalidLogin = false;
         },

@@ -33,7 +33,8 @@ export class AuthserviceService {
   }
 
   logOut() {
-    sessionStorage.removeItem('username')
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('roleId');
   }
 
 }

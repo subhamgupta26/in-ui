@@ -18,6 +18,7 @@ export interface DialogData {
 })
 export class IdeaslistComponent implements OnInit {
 
+  Allideas: idea[];
   ideas: idea[];
   projects: idea[];
 
@@ -25,12 +26,14 @@ export class IdeaslistComponent implements OnInit {
   desc: string;
 
   commentText : string;
+  userRole:boolean= true;
 
   data: string = "I like this read-more component because it's very helpful. This tutorial so good. I will share it with others.";
   dataLength: boolean;
   constructor(private router: Router, private ideaslistService: IdeaslistService, private toastr: ToastrService, public dialog: MatDialog) { 
     this.isReadMore(this.data)
     this.getIdeasAndProject();
+    // this.userRole = sessionStorage.getItem('roleId')==='PMC';
   }
 
   openDialog(): void {
@@ -61,8 +64,8 @@ export class IdeaslistComponent implements OnInit {
     this.dataLength = !(data.length > 30)
   }
 
-  submitComment() {
-    this.ideaslistService.submitComment(this.commentText).subscribe(    //how to know for which idea/project is this comment?
+  submitComment(id) {
+    this.ideaslistService.submitComment(this.commentText,id).subscribe(    //how to know for which idea/project is this comment?
       res => {
         console.log(res);
       },
@@ -72,8 +75,8 @@ export class IdeaslistComponent implements OnInit {
     );
   }
 
-  liked() {
-    this.ideaslistService.liked().subscribe(    //how to know for which idea/project is this comment?
+  liked(id:string) {
+    this.ideaslistService.liked(id).subscribe(    //how to know for which idea/project is this comment?
       res => {
         console.log(res);
       },
@@ -83,8 +86,8 @@ export class IdeaslistComponent implements OnInit {
     );
   }
 
-  approved() {
-    this.ideaslistService.approved().subscribe(    //how to know for which idea/project is this comment?
+  approved(id) {
+    this.ideaslistService.approved(id).subscribe(    //how to know for which idea/project is this comment?
       res => {
         console.log(res);
       },
@@ -94,8 +97,8 @@ export class IdeaslistComponent implements OnInit {
     );
   }
 
-  applied() {
-    this.ideaslistService.applied().subscribe(    //how to know for which idea/project is this comment?
+  applied(id) {
+    this.ideaslistService.applied(id).subscribe(    //how to know for which idea/project is this comment?
       res => {
         console.log(res);
       },
@@ -141,9 +144,10 @@ export class IdeaslistComponent implements OnInit {
       "reqMemberCount": '0',
       "likesCount": '0'
     }];
+
     this.projects = [{
       "_id": '9abc',
-      "userId": "m0j04br",
+      "userId": "rej04br",
       "title": "Vendor Live Rating Project",
       "desc": "ML project to get rating realtime based on the previous data and recommendation engine",
       "entitytype":2,
@@ -179,7 +183,7 @@ export class IdeaslistComponent implements OnInit {
     // this.ideaslistService.getUserIdeas().subscribe(
     //   res =>{
     //     console.log(res);
-    //       this.ideas=res['response'];
+    //       this.Allideas=res['response'];
     //       this.ideas = this.ideas.filter(obj => obj['entitytype']===1);
     //       this.projects = this.ideas.filter(obj => obj['entitytype']===2);
 
